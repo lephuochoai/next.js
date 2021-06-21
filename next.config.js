@@ -12,9 +12,12 @@ module.exports = withAntdLess({
       mode: 'local',
     },
   },
-
   // Other NextConfig Here...
   webpack(config) {
     return config
+  },
+  i18n: {
+    locales: ['en', 'jp'],
+    defaultLocale: 'en',
   },
 })

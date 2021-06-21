@@ -8,12 +8,14 @@ import Link from 'next/link'
 // import { useDarkMode } from '@/hooks'
 import { HtmlMeta, PageContainer } from '@/components'
 import styles from './styles.module.less'
+import useTrans from '@/hooks/useTrans'
 
 const FormItem = Form.Item
 const {Option} = Select
 
 export const Home = (props) => {
   // useDarkMode()
+  const { t, changeLang } = useTrans()
 
   return (
     <PageContainer className={cx(styles['comp-wrapper'], props.className)}>
@@ -25,8 +27,10 @@ export const Home = (props) => {
               <SmileFilled size={48} strokeWidth={1} />
             </a>
           </Link>
+          <Button onClick={() => changeLang('en')}>en</Button>
+          <Button onClick={() => changeLang('jp')}>jp</Button>
 
-          <p className="mb-0 mt-3 text-disabled">Welcome to the world !</p>
+          <p className="mb-0 mt-3 text-disabled">{t.home.title}</p>
         </div>
         <div>
           <Form layout="horizontal">
