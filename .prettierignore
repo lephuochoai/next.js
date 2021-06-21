@@ -1,0 +1,5 @@
+node_modules
+*.md
+
+/jsconfig.json
+/jsconfig.extend.json

@@ -1,0 +1,52 @@
+{
+  "env": {
+    "es6": true,
+    "browser": true,
+    "node": true
+  },
+  "parser": "babel-eslint",
+  "parserOptions": {
+    "ecmaVersion": 2018,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "impliedStrict": true,
+      "jsx": true
+    }
+  },
+  "plugins": ["react", "prettier"],
+  "rules": {
+    "react-hooks/exhaustive-deps": 0,
+    "indent": ["warn", 2, { "ignoredNodes": ["TemplateLiteral"] }],
+    "linebreak-style": [2, "unix"],
+    "quotes": [2, "single"],
+    "semi": ["error", "never"],
+    "curly": [2, "all"],
+    "camelcase": "off",
+    "react/display-name": "off",
+    "eqeqeq": [2, "smart"],
+    "one-var-declaration-per-line": [2, "always"],
+    "new-cap": 2,
+    "no-case-declarations": 0,
+    "max-len": ["error", 80],
+    "no-console": 0,
+    "import/prefer-default-export": 0,
+    "no-underscore-dangle": 0,
+    "react/destructuring-assignment": 0,
+    "react/require-default-props": 0,
+    "react/no-unused-prop-types": 0,
+    "react/prop-types": 0,
+    "@typescript-eslint/dot-notation": 0,
+    "@typescript-eslint/no-unused-vars": 0,
+    "@typescript-eslint/naming-convention": 0
+  },
+  "globals": {
+    "axios": true,
+    "PropTypes": true
+  },
+  "settings": {
+    "import/resolver": {
+      "alias": [["@/", "./src/"]]
+    }
+  },
+  "extends": ["next", "prettier"]
+}
