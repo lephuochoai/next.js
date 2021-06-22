@@ -7,7 +7,6 @@ import cx from 'classnames'
 import Link from 'next/link'
 // import { useDarkMode } from '@/hooks'
 import { HtmlMeta, PageContainer } from '@/components'
-import styles from './styles.module.less'
 import useTrans from '@/hooks/useTrans'
 
 const FormItem = Form.Item
@@ -18,9 +17,10 @@ export const Home = (props) => {
   const { t, changeLang } = useTrans()
 
   return (
-    <PageContainer className={cx(styles['comp-wrapper'], props.className)}>
+    <PageContainer className={cx(props.className)}>
       <HtmlMeta title="Home" />
       <div>
+        <Link href="/contact">Contact</Link>
         <div className="text-center mb-5">
           <Link href="#">
             <a className="logo mr-0">

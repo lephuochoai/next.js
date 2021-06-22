@@ -4,7 +4,6 @@ import jp from 'public/lang/jp.js'
 
 const useTrans = () => {
   const router = useRouter()
-  console.log(router)
   const { locale, query, pathname } = router
   const t = locale === 'jp' ? jp : en
 

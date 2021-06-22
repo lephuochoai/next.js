@@ -2,11 +2,14 @@ import React, { useEffect } from 'react'
 import { Spin } from 'antd'
 import { CgSpinner as Spiner } from 'react-icons/cg'
 import { HelmetProvider } from 'react-helmet-async'
+import { Provider } from 'react-redux'
+import store from '@/store'
 
 import { ErrorBoundary } from '@/components'
 import { MasterLayout } from '@/layouts'
 import { DISABLE_SSR_TRANSITION } from '@/pages/_document'
 import { isServer } from '@/utils'
+import Init from '@/app/Init'
 
 // import '@/styles/global.less'
 require('@/styles/global.less')
@@ -31,10 +34,14 @@ export default function CustomApp({ Component, pageProps }) {
   }, [])
 
   return (
-    <ErrorBoundary>
-      <div id="root">
-        <HelmetProvider>{layoutDom}</HelmetProvider>
-      </div>
-    </ErrorBoundary>
+    <Provider store={store}>
+      <Init>
+        <ErrorBoundary>
+          <div id="root">
+            <HelmetProvider>{layoutDom}</HelmetProvider>
+          </div>
+        </ErrorBoundary>
+      </Init>
+    </Provider>
   )
 }
