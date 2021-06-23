@@ -7,8 +7,11 @@ export const PageContainer = (props) => (
   <div
     className={cx(
       styles['comp-wrapper'],
-      { [styles['comp-wrapper--always-dark-mode']]: props.alwaysDarkMode },
+      {
+        [styles['comp-wrapper--always-dark-mode']]: props.alwaysDarkMode
+      },
       props.className,
+      'h-100'
     )}
     style={props.style}
   >

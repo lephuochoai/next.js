@@ -1,0 +1,1 @@
+export { Login as default } from '@/page-components/login/Login'

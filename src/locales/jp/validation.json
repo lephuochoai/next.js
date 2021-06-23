@@ -1,0 +1,12 @@
+{
+  "required": "入力してください。",
+  "email": "メールアドレスが正しくありません。",
+  "min": "最小 {{min}}",
+  "max": "最大 {{max}}",
+  "minLength": "{{min}}文字以上で入力してください。 ",
+  "maxLength": "{{max}}文字以内で入力してください。",
+  "password_not_match": "パスワードが一致しません。",
+  "invalid": "[Value] が無効です。",
+  "file_size_invalid": "ファイルサイズが無効です。",
+  "unsupported_format": "フォーマットが無効です。"
+}

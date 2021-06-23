@@ -11,6 +11,9 @@ import { DISABLE_SSR_TRANSITION } from '@/pages/_document'
 import { isServer } from '@/utils'
 import Init from '@/app/Init'
 
+import '@/locales/i18n'
+
+import 'bootstrap/dist/css/bootstrap.min.css'
 // import '@/styles/global.less'
 require('@/styles/global.less')
 

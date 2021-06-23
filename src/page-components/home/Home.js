@@ -7,14 +7,14 @@ import cx from 'classnames'
 import Link from 'next/link'
 // import { useDarkMode } from '@/hooks'
 import { HtmlMeta, PageContainer } from '@/components'
-import useTrans from '@/hooks/useTrans'
+import { useTranslation } from 'react-i18next'
 
 const FormItem = Form.Item
 const {Option} = Select
 
 export const Home = (props) => {
   // useDarkMode()
-  const { t, changeLang } = useTrans()
+  const { t, i18n } = useTranslation()
 
   return (
     <PageContainer className={cx(props.className)}>
@@ -27,10 +27,9 @@ export const Home = (props) => {
               <SmileFilled size={48} strokeWidth={1} />
             </a>
           </Link>
-          <Button onClick={() => changeLang('en')}>en</Button>
-          <Button onClick={() => changeLang('jp')}>jp</Button>
-
-          <p className="mb-0 mt-3 text-disabled">{t.home.title}</p>
+          <Button onClick={() => i18n.changeLanguage('en')}>en</Button>
+          <Button onClick={() => i18n.changeLanguage('jp')}>jp</Button>
+          <p className="mb-0 mt-3 text-disabled">{t('home.title')}</p>
         </div>
         <div>
           <Form layout="horizontal">
