@@ -1,8 +1,9 @@
 import accountApis from '@/apis/account'
 import axiosClient from '@/apis/axiosClient'
 import { HtmlMeta, PageContainer } from '@/components'
+import AuthLayout from '@/layouts/AuthLayout/AuthLayout'
 import { withAuth } from '@/middlewares/auth'
-import { setToken } from '@/store/slices/accountSlice'
+import { setProfile, setToken } from '@/store/slices/accountSlice'
 import { COLORS } from '@/styles/styles'
 import errorHelper from '@/utils/errorHelper'
 import yup from '@/utils/yup'
@@ -38,15 +39,24 @@ const Login = (props) => {
         if (result.success) {
           const { access_token } = result.data
           axiosClient.defaults.headers.common = {
-            'admin-key': `Bearer ${access_token}`,
+            'Authorization': `Bearer ${access_token}`,
           }
           localStorage.setItem('token', access_token)
           dispatch(setToken({
             token: access_token
           }))
+          return accountApis.profile()
         } else {
           throw result
         }
+      })
+      .then((res) => {
+        if (res.success) {
+          dispatch(setProfile({ info: res.data }))
+        } else {
+          throw res
+        }
+        setLoading(false)
       })
       .catch((err) => {
         setLoading(false)
@@ -55,7 +65,7 @@ const Login = (props) => {
   }
 
   return (
-    <PageContainer className={cx(props.className)}>
+    <AuthLayout className={cx(props.className)}>
       <HtmlMeta title="Login" />
       <div
         className="h-100 d-flex justify-content-center align-items-center p-4"
@@ -101,7 +111,7 @@ const Login = (props) => {
                   />
                 </Tooltip>
               </Form.Item>
-            )}  
+            )}
           />
           <Controller
             name="password"
@@ -141,7 +151,7 @@ const Login = (props) => {
           </div>
         </Form>
       </div>
-    </PageContainer>
+    </AuthLayout>
   )
 }
 

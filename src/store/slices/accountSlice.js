@@ -11,13 +11,14 @@ const accountSlice = createSlice({
       const { token } = action.payload
       state.token = token
     },
+    setProfile(state, action) {
+      const { info } = action.payload
+      state.profile = info
+    },
     removeAccount(state) {
       state.token = ''
       state.profile = {}
     },
-    setProfile(state, action) {
-      state.profile = action.payload || {}
-    }
   }
 })
 
