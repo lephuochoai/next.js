@@ -15,6 +15,7 @@
   },
   "plugins": ["react", "prettier"],
   "rules": {
+    "import/no-anonymous-default-export": "off",
     "react-hooks/exhaustive-deps": 0,
     "indent": ["warn", 2, { "ignoredNodes": ["TemplateLiteral"] }],
     "linebreak-style": [2, "unix"],

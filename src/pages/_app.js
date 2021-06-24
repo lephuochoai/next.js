@@ -9,10 +9,10 @@ import { message, Spin } from 'antd'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import React, { useEffect } from 'react'
 import { HelmetProvider } from 'react-helmet-async'
-import { CgSpinner as Spiner } from 'react-icons/cg'
 import { Provider } from 'react-redux'
+import dynamic from 'next/dynamic'
 
-// import '@/styles/global.less'
+import 'nprogress/nprogress.css'
 require('@/styles/global.less')
 
 message.config({
@@ -20,8 +20,11 @@ message.config({
   maxCount: 1
 })
 
-Spin.setDefaultIndicator(
-  <Spiner className="icon-spin" style={{ fontSize: '200%' }} />,
+const TopProgressBar = dynamic(
+  () => {
+    return import('@/components/TopProgressBar')
+  },
+  { ssr: false },
 )
 
 export default function CustomApp({ Component, pageProps }) {
@@ -44,6 +47,7 @@ export default function CustomApp({ Component, pageProps }) {
       <Init>
         <ErrorBoundary>
           <div id="root">
+            <TopProgressBar />
             <HelmetProvider>{layoutDom}</HelmetProvider>
           </div>
         </ErrorBoundary>
