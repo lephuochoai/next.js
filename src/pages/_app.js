@@ -1,21 +1,24 @@
-import React, { useEffect } from 'react'
-import { Spin } from 'antd'
-import { CgSpinner as Spiner } from 'react-icons/cg'
-import { HelmetProvider } from 'react-helmet-async'
-import { Provider } from 'react-redux'
-import store from '@/store'
-
+import Init from '@/app/Init'
 import { ErrorBoundary } from '@/components'
 import { MasterLayout } from '@/layouts'
-import { DISABLE_SSR_TRANSITION } from '@/pages/_document'
-import { isServer } from '@/utils'
-import Init from '@/app/Init'
-
 import '@/locales/i18n'
-
+import { DISABLE_SSR_TRANSITION } from '@/pages/_document'
+import store from '@/store'
+import { isServer } from '@/utils'
+import { message, Spin } from 'antd'
 import 'bootstrap/dist/css/bootstrap.min.css'
+import React, { useEffect } from 'react'
+import { HelmetProvider } from 'react-helmet-async'
+import { CgSpinner as Spiner } from 'react-icons/cg'
+import { Provider } from 'react-redux'
+
 // import '@/styles/global.less'
 require('@/styles/global.less')
+
+message.config({
+  top: 10,
+  maxCount: 1
+})
 
 Spin.setDefaultIndicator(
   <Spiner className="icon-spin" style={{ fontSize: '200%' }} />,

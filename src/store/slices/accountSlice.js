@@ -7,11 +7,11 @@ const accountSlice = createSlice({
     profile: {},
   },
   reducers: {
-    login(state, action) {
+    setToken(state, action) {
       const { token } = action.payload
       state.token = token
     },
-    logout(state) {
+    removeAccount(state) {
       state.token = ''
       state.profile = {}
     },
@@ -24,7 +24,7 @@ const accountSlice = createSlice({
 const { actions, reducer } = accountSlice
 
 export const {
-  login, logout, setProfile
+  setToken, removeAccount, setProfile
 } = actions
 
 export default reducer

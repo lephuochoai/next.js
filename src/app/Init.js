@@ -1,4 +1,4 @@
-import { login } from '@/store/slices/accountSlice'
+import { setToken } from '@/store/slices/accountSlice'
 import { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 
@@ -25,7 +25,7 @@ function Init({ children }) {
   useEffect(() => {
     const token = localStorage.getItem('token')
     if (token) {
-      dispatch(login({ token }))
+      dispatch(setToken({ token }))
       setLoading(false)
     } else {
       setLoading(false)
