@@ -1,11 +1,10 @@
 import cx from 'classnames'
 import React from 'react'
-
 import styles from './styles.module.less'
 
-export const PageContainer = (props) => (
-  <div
-    className={cx(
+function AuthLayout(props) {
+  return (
+    <div className={cx(
       styles['comp-wrapper'],
       {
         [styles['comp-wrapper--always-dark-mode']]: props.alwaysDarkMode
@@ -13,8 +12,10 @@ export const PageContainer = (props) => (
       props.className,
       'h-100'
     )}
-    style={props.style}
-  >
-    {props.children}
-  </div>
-)
+    style={props.style}>
+      {props.children}
+    </div>
+  )
+}
+
+export default AuthLayout

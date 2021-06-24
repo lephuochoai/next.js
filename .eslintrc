@@ -27,7 +27,7 @@
     "one-var-declaration-per-line": [2, "always"],
     "new-cap": 2,
     "no-case-declarations": 0,
-    "max-len": ["error", 80],
+    "max-len": ["error", { "code": 80 }],
     "no-console": 0,
     "import/prefer-default-export": 0,
     "no-underscore-dangle": 0,
@@ -37,7 +37,8 @@
     "react/prop-types": 0,
     "@typescript-eslint/dot-notation": 0,
     "@typescript-eslint/no-unused-vars": 0,
-    "@typescript-eslint/naming-convention": 0
+    "@typescript-eslint/naming-convention": 0,
+    "no-trailing-spaces": "error"
   },
   "globals": {
     "axios": true,
