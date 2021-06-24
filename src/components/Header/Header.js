@@ -17,7 +17,7 @@ function Header() {
   const dispatch = useDispatch()
   const router = useRouter()
   const [search, setSearch] = useState('')
-  const { token, profile } = useSelector(state => state.account)
+  const { token, profile } = useSelector((state) => state.account)
 
   const onLogout = () => {
     accountApis.logout()
@@ -30,24 +30,22 @@ function Header() {
   }
 
   const dropdownMenu = (
-    <Menu mode='vertical' className={cx(styles['menu-dropdown'])}>
+    <Menu mode="vertical" className={cx(styles['menu-dropdown'])}>
       <Menu.Item
         key="1"
-        className={
-          cx(styles['profile-account'])
-        }
+        className={cx(styles['profile-account'])}
         onClick={onDirectToProfile}
       >
-        <div className="p-2 d-flex align-items-center">
+        <div className="p-2 d-flex align-items-center flex-grow-1">
           <div className="left">
-            <Avatar
-              size={64}
-              icon={<AiOutlineUser />}
-              src={profile.avatar}
-            />
+            <Avatar size={55} icon={<AiOutlineUser />} src={profile.avatar} />
           </div>
-          <div className="account-info ms-2 fs-5">
-            Phuoc Hoai
+          <div className={cx(styles['account-info'], 'ms-2 fs-6')}>
+            {
+              `${profile.first_name_en}
+              ${profile.middle_name_en}
+              ${profile.last_name_en}`
+            }
           </div>
         </div>
       </Menu.Item>
@@ -58,9 +56,7 @@ function Header() {
               className={cx(styles['icon-menu-dropdown-box-icon'])}
             />
           </div>
-          <div>
-            Logout
-          </div>
+          <div>Logout</div>
         </div>
       </Menu.Item>
     </Menu>
@@ -128,41 +124,36 @@ function Header() {
               <BsSearch />
             </Button>
           </form>
-          {
-            !token ? (
-              <div className="auth-container">
-                <Link href={Breadcrumbs.LOGIN} passHref>
-                  <span
-                    className={cx(styles['link-auth'], 'pe-auto')}
-                    tabIndex="-1"
-                    role="button"
-                  >
-                    <FaSignInAlt className="fs-4 me-2" />
-                    <span className="fs-5">Login / Register</span>
-                  </span>
-                </Link>
-              </div>
-            ) : (
-              <div className={cx(styles['account-container'])}>
-                <Dropdown
-                  trigger={['click']}
-                  overlay={dropdownMenu}
-                  placement="bottomRight"
+          {!token ? (
+            <div className="auth-container">
+              <Link href={Breadcrumbs.LOGIN} passHref>
+                <span
+                  className={cx(styles['link-auth'], 'pe-auto')}
+                  tabIndex="-1"
+                  role="button"
                 >
-                  <div className="pe-auto"
-                    role="button"
-                    tabIndex="-1"
-                  >
-                    <Avatar
-                      size="large"
-                      icon={<AiOutlineUser />}
-                      src={profile.avatar}
-                    />
-                  </div>
-                </Dropdown>
-              </div>
-            )
-          }
+                  <FaSignInAlt className="fs-4 me-2" />
+                  <span className="fs-5">Login / Register</span>
+                </span>
+              </Link>
+            </div>
+          ) : (
+            <div className={cx(styles['account-container'])}>
+              <Dropdown
+                trigger={['click']}
+                overlay={dropdownMenu}
+                placement="bottomRight"
+              >
+                <div className="pe-auto" role="button" tabIndex="-1">
+                  <Avatar
+                    size="large"
+                    icon={<AiOutlineUser />}
+                    src={profile.avatar}
+                  />
+                </div>
+              </Dropdown>
+            </div>
+          )}
         </div>
       </div>
     </header>

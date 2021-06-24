@@ -20,13 +20,7 @@ export const Home = (props) => {
     <PageContainer className={cx(props.className)}>
       <HtmlMeta title="Home" />
       <div>
-        <Link href="/contact">Contact</Link>
         <div className="text-center mb-5">
-          <Link href="#">
-            <a className="logo mr-0">
-              <SmileFilled size={48} strokeWidth={1} />
-            </a>
-          </Link>
           <Button onClick={() => i18n.changeLanguage('en')}>en</Button>
           <Button onClick={() => i18n.changeLanguage('jp')}>jp</Button>
           <p className="mb-0 mt-3 text-disabled">{t('home.title')}</p>
