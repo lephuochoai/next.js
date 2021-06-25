@@ -18,6 +18,7 @@ export default class CustomDocument extends Document {
   render() {
     return (
       <Html lang="en" className="no-js">
+        <title>NextJs Base</title>
         <Head>
           <meta name="referrer" content="no-referrer" />
           <link rel="icon" href="/favicon/favicon.svg" />
