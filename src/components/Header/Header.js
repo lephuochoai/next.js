@@ -1,5 +1,5 @@
 import accountApis from '@/apis/account'
-import Breadcrumbs from '@/commons/breadcrumbs'
+import Breadcrumbs from '@/utils/breadcrumbs'
 import { removeAccount } from '@/store/slices/accountSlice'
 import { Avatar, Button, Dropdown, Input, Menu } from 'antd'
 import cx from 'classnames'
@@ -27,6 +27,11 @@ function Header() {
 
   const onDirectToProfile = () => {
     router.push('/profile')
+  }
+
+  const onDirectToSearch = (e) => {
+    e.preventDefault()
+    router.push(`/search?q=${search}`)
   }
 
   const dropdownMenu = (
@@ -108,19 +113,21 @@ function Header() {
           </ul>
         </div>
         <div
-          className="right-container flex-grow-1
-            d-flex align-items-center justify-content-end"
-        >
+          className="right-container
+          flex-grow-1 d-flex align-items-center justify-content-end">
           <form
+            onSubmit={onDirectToSearch}
             className="search-container d-flex
-              flex-grow-1 justify-content-end me-2"
-          >
+              flex-grow-1 justify-content-end me-3">
             <Input
               className={cx(styles['input-search'])}
               value={search}
               onChange={(e) => setSearch(e.target.value)}
+              placeholder="Search ..."
             />
-            <Button className={cx(styles['button-search'])} type="primary">
+            <Button
+              className={cx(styles['button-search'])} type="primary"
+              htmlType="submit">
               <BsSearch />
             </Button>
           </form>

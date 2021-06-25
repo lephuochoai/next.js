@@ -1,5 +1,5 @@
 
-import Breadcrumbs from '@/commons/breadcrumbs'
+import Breadcrumbs from '@/utils/breadcrumbs'
 import Message from '@/components/Message'
 import STATUS_REQUEST from '@/constants/StatusRequest'
 import i18n from '@/locales/i18n'

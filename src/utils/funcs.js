@@ -7,3 +7,5 @@ export const getToken = () => {
 }
 
 export const genId = () => Math.random().toString(36).substr(2, 9)
+export const genColor = () =>
+  '#'+(0x1000000+Math.random()*0xffffff).toString(16).substr(1,6)

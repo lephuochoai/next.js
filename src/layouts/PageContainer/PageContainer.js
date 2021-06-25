@@ -15,7 +15,9 @@ export const PageContainer = (props) => (
     )}
     style={props.style}
   >
-    <Header /> 
-    {props.children}
+    <Header />
+    <div className={cx(styles['body-page'])}>
+      {props.children}
+    </div>
   </div>
 )
