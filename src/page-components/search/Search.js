@@ -12,7 +12,7 @@ let timeSearch = null
 
 export const Search = (props) => {
   const router = useRouter()
-  const [q, setQ] = useState()
+  const [q, setQ] = useState(router.query?.q)
   const [listRecentSearch, setListRecentSearch] =
     useState(Array
       .isArray(JSON.parse(localStorage.getItem('recent-search')))
@@ -21,9 +21,8 @@ export const Search = (props) => {
   const [searching, setSearching] = useState(false)
 
   useEffect(() => {
-    setQ(router.query?.q)
     onSearch()
-  }, [router.query])
+  }, [])
 
   const onSearch = () => {
     setSearching(true)
